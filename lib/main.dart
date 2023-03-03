@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_class_work/pages/scrolling.dart';
 import 'auth_page.dart';
 import 'home.dart';
 
@@ -23,7 +24,8 @@ class MyTheme extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (context) => const AuthPage(),
-        '/home':(context) => const HomePage()
+        '/home':(context) => const HomePage(),
+        '/scrolling':(context) => const ScrollingPage()
         },
     );
   }

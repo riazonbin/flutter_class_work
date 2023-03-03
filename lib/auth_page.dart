@@ -69,7 +69,7 @@ class AuthPage extends StatelessWidget {
                       shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20)))),
                       backgroundColor: MaterialStatePropertyAll(Colors.amber)),
-                  onPressed: () {},
+                  onPressed:() => Navigator.pushNamed(context, '/scrolling'),
                   child: const Text("Test scrolling"),
                 ),
               ),
