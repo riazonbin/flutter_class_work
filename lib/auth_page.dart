@@ -15,22 +15,23 @@ class AuthPage extends StatelessWidget {
                 children: [
                   const Text(
                     "MonkeyApp",
-                    style: TextStyle(
-                      color: Colors.amber,
-                      fontSize: 32
-                    ),
-                    ),
+                    style: TextStyle(color: Colors.amber, fontSize: 32),
+                  ),
                   Image.asset("images/monkey.png")
                 ],
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.05,
               ),
-              const AuthTextFieldWidget(textForField: "Email",),
+              const AuthTextFieldWidget(
+                textForField: "Email",
+              ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.02,
               ),
-              const AuthTextFieldWidget(textForField: "Password",),
+              const AuthTextFieldWidget(
+                textForField: "Password",
+              ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.02,
               ),
@@ -39,13 +40,9 @@ class AuthPage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.7,
                 child: ElevatedButton(
                   style: const ButtonStyle(
-                    shape: MaterialStatePropertyAll(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20))
-                        )
-                        ),
-                        backgroundColor: MaterialStatePropertyAll(Colors.amber)
-                  ),
+                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)))),
+                      backgroundColor: MaterialStatePropertyAll(Colors.amber)),
                   onPressed: () {
                     const AlertDialog(
                       content: Text("Выполнен переход"),
@@ -62,14 +59,20 @@ class AuthPage extends StatelessWidget {
               InkWell(
                 child: const Text(
                   "Sign up?",
-                  style: TextStyle(
-                    color: Colors.amber
-                  ),
+                  style: TextStyle(color: Colors.amber),
                 ),
-                onTap: () {
-                  
-                },
-              )
+                onTap: () {},
+              ),
+              SizedBox(
+                child: ElevatedButton(
+                  style: const ButtonStyle(
+                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)))),
+                      backgroundColor: MaterialStatePropertyAll(Colors.amber)),
+                  onPressed: () {},
+                  child: const Text("Test scrolling"),
+                ),
+              ),
             ],
           ),
         ),
@@ -80,9 +83,7 @@ class AuthPage extends StatelessWidget {
 
 class AuthTextFieldWidget extends StatelessWidget {
   final String textForField;
-  const AuthTextFieldWidget({
-    super.key, required this.textForField
-  });
+  const AuthTextFieldWidget({super.key, required this.textForField});
 
   @override
   Widget build(BuildContext context) {
@@ -91,23 +92,18 @@ class AuthTextFieldWidget extends StatelessWidget {
       child: TextField(
         cursorColor: Colors.amber,
         decoration: InputDecoration(
-          label: Text(
-            textForField
-          ),
-          labelStyle: const TextStyle(color: Colors.amber),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-            borderSide: const BorderSide(color: Colors.amber)
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-            borderSide: const BorderSide(color: Colors.amber)
-          ),
-          prefixIcon: const Icon(
-            Icons.email,
-            color: Colors.lime,
-          )
-        ),
+            label: Text(textForField),
+            labelStyle: const TextStyle(color: Colors.amber),
+            focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15),
+                borderSide: const BorderSide(color: Colors.amber)),
+            enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15),
+                borderSide: const BorderSide(color: Colors.amber)),
+            prefixIcon: const Icon(
+              Icons.email,
+              color: Colors.lime,
+            )),
       ),
     );
   }
