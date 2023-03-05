@@ -64,13 +64,29 @@ class AuthPage extends StatelessWidget {
                 onTap: () {},
               ),
               SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              SizedBox(
                 child: ElevatedButton(
                   style: const ButtonStyle(
                       shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20)))),
                       backgroundColor: MaterialStatePropertyAll(Colors.amber)),
-                  onPressed:() => Navigator.pushNamed(context, '/scrolling'),
+                  onPressed: () => Navigator.pushNamed(context, '/scrolling'),
                   child: const Text("Test scrolling"),
+                ),
+              ),
+                            SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+                           SizedBox(
+                child: ElevatedButton(
+                  style: const ButtonStyle(
+                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)))),
+                      backgroundColor: MaterialStatePropertyAll(Colors.amber)),
+                  onPressed: () => Navigator.pushNamed(context, '/iphone_menu'),
+                  child: const Text("Test iphone menu"),
                 ),
               ),
             ],
