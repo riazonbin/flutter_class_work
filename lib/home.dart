@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_class_work/pages/drawer.dart';
 import 'package:flutter_class_work/pagesForHomePage/calendar.dart';
 import 'package:flutter_class_work/pagesForHomePage/deals.dart';
 
@@ -64,7 +65,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: isSearching ? searchAppBar : defaultAppBar,
-      drawer: const Drawer(),
+      drawer: const DrawerHomeMenu(),
       bottomNavigationBar: BottomNavigationBar(
           items: const [
             BottomNavigationBarItem(
