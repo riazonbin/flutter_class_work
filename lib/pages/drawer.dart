@@ -13,26 +13,37 @@ class DrawerHomeMenu extends StatelessWidget {
           UserAccountsDrawerHeader(
               accountName: const Text("Аккаунт"),
               accountEmail: const Text("Почта"),
-              otherAccountsPictures: [IconButton(onPressed:() {
-              }, icon: Icon(Icons.exit_to_app))],
+              otherAccountsPictures: [
+                IconButton(
+                    onPressed: () {}, icon: const Icon(Icons.exit_to_app))
+              ],
               currentAccountPicture:
                   const CircleAvatar(backgroundImage: NetworkImage(catUrl))),
           ListTile(
             title: const Text("Настройки"),
             trailing: const Icon(Icons.arrow_right),
-            leading: const Icon(Icons.settings),
+            leading: const Icon(
+              Icons.settings,
+              color: Colors.blueGrey,
+            ),
             onTap: () {},
           ),
           ListTile(
             title: const Text("Магазин"),
             trailing: const Icon(Icons.arrow_right),
-            leading: const Icon(Icons.shop),
+            leading: const Icon(
+              Icons.shop,
+              color: Colors.green,
+            ),
             onTap: () {},
           ),
           ListTile(
             title: const Text("Помощь"),
             trailing: const Icon(Icons.arrow_right),
-            leading: const Icon(Icons.help),
+            leading: const Icon(
+              Icons.help,
+              color: Colors.lightBlue,
+            ),
             onTap: () {},
           ),
         ],
