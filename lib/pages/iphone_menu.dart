@@ -14,12 +14,12 @@ class IphoneMenuPage extends StatelessWidget {
         body: Center(
           child: SizedBox(
             width: MediaQuery.of(context).size.width * 0.95,
-            height: MediaQuery.of(context).size.height * 0.80,
-            child: const ListMaker(numberOfItems: 22),
+            height: MediaQuery.of(context).size.height * 0.85,
+            child: const ListMaker(numberOfItems: 18),
           ),
         ),
         bottomNavigationBar: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.11,
+            height: MediaQuery.of(context).size.height * 0.15,
             child: Card(
               color: Colors.grey.withOpacity(0.0),
               shape: RoundedRectangleBorder(
@@ -42,14 +42,18 @@ class ListMaker extends StatelessWidget {
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 4, mainAxisSpacing: 10, crossAxisSpacing: 10),
       itemBuilder: (context, index) {
-        return Card(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-            color: Colors.amber,
-            child: IconButton(
-              icon: const Icon(Icons.apple),
-              onPressed: () {},
-            ));
+        return SizedBox(
+          height: MediaQuery.of(context).size.height * 0.07,
+          width: MediaQuery.of(context).size.width * 0.07,
+          child: Card(
+              shape:
+                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+              color: Colors.amber,
+              child: IconButton(
+                icon: const Icon(Icons.apple),
+                onPressed: () {},
+              )),
+        );
       },
     );
   }
