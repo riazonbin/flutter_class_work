@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "695904024920",
+    "project_id": "monkeymobile-38bef",
+    "storage_bucket": "monkeymobile-38bef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695904024920:android:89dacf3816632bd8334d2d",
+        "android_client_info": {
+          "package_name": "com.example.flutter_class_work"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "695904024920-u6vfb2p6v3g6gs6989qpqsnurjlnl9rb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvk5hQ3_yfV6lzN7ty9YrYwHgEzmrGxJQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "695904024920-u6vfb2p6v3g6gs6989qpqsnurjlnl9rb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
