@@ -1,7 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_class_work/auth/service.dart';
 
-class AuthPage extends StatelessWidget {
+class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
+
+  @override
+  State<AuthPage> createState() => _AuthPageState();
+}
+
+class _AuthPageState extends State<AuthPage> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final AuthServices _service = AuthServices();
+  bool isRegister = false;
+
+  Future signIn() async {
+    _service.signIn(_emailController.text, _passwordController.text);
+  }
+
+  Future signUp() async {
+    _service.register(_emailController.text, _passwordController.text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +42,15 @@ class AuthPage extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.05,
               ),
-              const AuthTextFieldWidget(
+              AuthTextFieldWidget(
+                _emailController,
                 textForField: "Email",
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.02,
               ),
-              const AuthTextFieldWidget(
+              AuthTextFieldWidget(
+                _passwordController,
                 textForField: "Password",
               ),
               SizedBox(
@@ -44,24 +65,24 @@ class AuthPage extends StatelessWidget {
                           borderRadius: BorderRadius.all(Radius.circular(20)))),
                       backgroundColor: MaterialStatePropertyAll(Colors.amber)),
                   onPressed: () {
-                    const AlertDialog(
-                      content: Text("Выполнен переход"),
-                      backgroundColor: Colors.green,
-                    );
-                    Navigator.popAndPushNamed(context, '/home');
+                    isRegister ? signUp() : signIn();
                   },
-                  child: const Text("Sign in"),
+                  child: Text(isRegister ? "Sign up" : "Sign in"),
                 ),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.02,
               ),
               InkWell(
-                child: const Text(
-                  "Sign up?",
-                  style: TextStyle(color: Colors.amber),
+                child: Text(
+                  isRegister ? "Sign in?" : "Sign up?",
+                  style: const TextStyle(color: Colors.amber),
                 ),
-                onTap: () {},
+                onTap: () {
+                  setState(() {
+                    isRegister = !isRegister;
+                  });
+                },
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.02,
@@ -76,10 +97,10 @@ class AuthPage extends StatelessWidget {
                   child: const Text("Test scrolling"),
                 ),
               ),
-                            SizedBox(
+              SizedBox(
                 height: MediaQuery.of(context).size.height * 0.02,
               ),
-                           SizedBox(
+              SizedBox(
                 child: ElevatedButton(
                   style: const ButtonStyle(
                       shape: MaterialStatePropertyAll(RoundedRectangleBorder(
@@ -99,7 +120,9 @@ class AuthPage extends StatelessWidget {
 
 class AuthTextFieldWidget extends StatelessWidget {
   final String textForField;
-  const AuthTextFieldWidget({super.key, required this.textForField});
+  final TextEditingController? controller;
+  const AuthTextFieldWidget(this.controller,
+      {super.key, required this.textForField});
 
   @override
   Widget build(BuildContext context) {
@@ -107,6 +130,7 @@ class AuthTextFieldWidget extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.8,
       child: TextField(
         cursorColor: Colors.amber,
+        controller: controller,
         decoration: InputDecoration(
             label: Text(textForField),
             labelStyle: const TextStyle(color: Colors.amber),
