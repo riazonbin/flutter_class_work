@@ -4,6 +4,11 @@ import 'model.dart';
 class AuthServices {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
+  Stream<UserModel?> get currentUser {
+    return _firebaseAuth.authStateChanges().map(
+        (User? user) => user != null ? UserModel.fromFirebase(user) : null);
+  }
+
   Future<UserModel?> signIn(String email, String password) async {
     try {
       var result = await _firebaseAuth.signInWithEmailAndPassword(

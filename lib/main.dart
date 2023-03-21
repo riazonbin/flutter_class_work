@@ -1,7 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_class_work/auth/landing.dart';
+import 'package:flutter_class_work/auth/service.dart';
 import 'package:flutter_class_work/pages/iphone_menu.dart';
 import 'package:flutter_class_work/pages/scrolling.dart';
+import 'package:provider/provider.dart';
 import 'auth_page.dart';
 import 'home.dart';
 
@@ -16,22 +19,26 @@ class MyTheme extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.amber,
-        primaryColor: Colors.amber,
-          elevatedButtonTheme: const ElevatedButtonThemeData(style: ButtonStyle(
-
+    return StreamProvider.value(
+      value: AuthServices().currentUser,
+      initialData: null,
+      child: MaterialApp(
+        theme: ThemeData(
+          primarySwatch: Colors.amber,
+          primaryColor: Colors.amber,
+            elevatedButtonTheme: const ElevatedButtonThemeData(style: ButtonStyle(
+    
+              )
             )
-          )
+        ),
+        debugShowCheckedModeBanner: false,
+        routes: {
+          '/': (context) => const LandingPage(),
+          '/home':(context) => const HomePage(),
+          '/scrolling':(context) => const ScrollingPage(),
+          '/iphone_menu':(context) => const IphoneMenuPage()
+          },
       ),
-      debugShowCheckedModeBanner: false,
-      routes: {
-        '/': (context) => const AuthPage(),
-        '/home':(context) => const HomePage(),
-        '/scrolling':(context) => const ScrollingPage(),
-        '/iphone_menu':(context) => const IphoneMenuPage()
-        },
     );
   }
 }

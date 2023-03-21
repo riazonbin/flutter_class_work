@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_class_work/auth/service.dart';
 import 'package:flutter_class_work/pages/drawer.dart';
 import 'package:flutter_class_work/pagesForHomePage/calendar.dart';
 import 'package:flutter_class_work/pagesForHomePage/deals.dart';
@@ -25,8 +26,8 @@ class _HomePageState extends State<HomePage> {
     var defaultAppBar = AppBar(
       actions: [
         IconButton(
-            onPressed: () {
-              Navigator.popAndPushNamed(context, '/');
+            onPressed: () async{
+              await AuthServices().logOut();
             },
             icon: const Icon(Icons.exit_to_app)),
         IconButton(
