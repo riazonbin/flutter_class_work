@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_class_work/auth/service.dart';
 import 'package:flutter_class_work/pages/drawer.dart';
 import 'package:flutter_class_work/pagesForHomePage/calendar.dart';
 import 'package:flutter_class_work/pagesForHomePage/deals.dart';
+
+import 'pagesForHomePage/dealsWidgets/add_deal.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,7 +18,6 @@ class _HomePageState extends State<HomePage> {
   int currentPageIndex = 0;
   String titleOfPage = "Список дел";
   String searchText = "";
-  var deals = dealsList;
 
   bool isSearching = false;
   TextEditingController searchController = TextEditingController();
@@ -26,7 +28,7 @@ class _HomePageState extends State<HomePage> {
     var defaultAppBar = AppBar(
       actions: [
         IconButton(
-            onPressed: () async{
+            onPressed: () async {
               await AuthServices().logOut();
             },
             icon: const Icon(Icons.exit_to_app)),
@@ -65,27 +67,43 @@ class _HomePageState extends State<HomePage> {
     );
 
     return Scaffold(
-      appBar: isSearching ? searchAppBar : defaultAppBar,
-      drawer: const DrawerHomeMenu(),
-      bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.book), label: "Список дел"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.calendar_month), label: "Календарь")
-          ],
-          currentIndex: currentPageIndex,
-          onTap: (int index) {
-            setState(() {
-              currentPageIndex = index;
-              if (currentPageIndex == 0) {
-                titleOfPage = "Список дел";
-              } else {
-                titleOfPage = "Календарь";
-              }
-            });
-          }),
-      body: listOfPages[currentPageIndex],
-    );
+        appBar: isSearching ? searchAppBar : defaultAppBar,
+        drawer: const DrawerHomeMenu(),
+        bottomNavigationBar: BottomNavigationBar(
+            items: const [
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.book), label: "Список дел"),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.calendar_month), label: "Календарь")
+            ],
+            currentIndex: currentPageIndex,
+            onTap: (int index) {
+              setState(() {
+                currentPageIndex = index;
+                if (currentPageIndex == 0) {
+                  titleOfPage = "Список дел";
+                } else {
+                  titleOfPage = "Календарь";
+                }
+              });
+            }),
+        body: listOfPages[currentPageIndex],
+        floatingActionButton: AnimatedOpacity(
+          duration: const Duration(milliseconds: 300),
+          opacity: currentPageIndex == 0 ? 1 : 0,
+          child: FloatingActionButton(
+            onPressed: () {
+              Navigator.push(context, CupertinoPageRoute(
+                builder: (context) {
+                  var deal = Deal("", "", "", "");
+                  return AddDeal(deal, "Добавить", isEditing: false);
+                },
+              ));
+            },
+            child: const Icon(Icons.add),
+          ),
+        ),
+        floatingActionButtonLocation:
+            FloatingActionButtonLocation.centerDocked);
   }
 }

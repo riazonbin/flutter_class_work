@@ -5,7 +5,6 @@ import 'package:flutter_class_work/auth/service.dart';
 import 'package:flutter_class_work/pages/iphone_menu.dart';
 import 'package:flutter_class_work/pages/scrolling.dart';
 import 'package:provider/provider.dart';
-import 'auth_page.dart';
 import 'home.dart';
 
 void main() async{
