@@ -50,6 +50,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               setState(() {
                 isSearching = false;
+                searchText = "";
                 searchController.clear();
               });
             },

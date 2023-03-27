@@ -59,24 +59,31 @@ class _AddDealState extends State<AddDeal> {
             height: MediaQuery.of(context).size.height * 0.02,
           ),
           if (widget.isEditing == false) ...[
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.08,
-              child: ElevatedButton(
-                child: const Text("Добавить"),
-                onPressed: () async {
-                  CollectionReference deals =
-                      FirebaseFirestore.instance.collection("deals");
-                  await deals.add({
-                    'name': nameController.text,
-                    'description': descriptionController.text,
-                    'image': widget.defaultImage
-                  });
-                  nameController.clear();
-                  descriptionController.clear();
-                  imageController.clear();
-                  Navigator.pop(context);
-                },
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.08,
+                  child: ElevatedButton(
+                    child: const Row(
+                      children: [Text("Добавить"), Icon(Icons.add)],
+                    ),
+                    onPressed: () async {
+                      CollectionReference deals =
+                          FirebaseFirestore.instance.collection("deals");
+                      await deals.add({
+                        'name': nameController.text,
+                        'description': descriptionController.text,
+                        'image': widget.defaultImage
+                      });
+                      nameController.clear();
+                      descriptionController.clear();
+                      imageController.clear();
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+              ],
             ),
           ] else ...[
             Row(
@@ -85,7 +92,9 @@ class _AddDealState extends State<AddDeal> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.08,
                   child: ElevatedButton(
-                    child: const Text("Изменить"),
+                    child: const Row(
+                      children: [Text("Изменить"), Icon(Icons.refresh)],
+                    ),
                     onPressed: () async {
                       CollectionReference deals =
                           FirebaseFirestore.instance.collection("deals");
@@ -107,7 +116,9 @@ class _AddDealState extends State<AddDeal> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.08,
                   child: ElevatedButton(
-                    child: const Text("Удалить"),
+                    child: const Row(
+                      children: [Text("Удалить"), Icon(Icons.delete)],
+                    ),
                     onPressed: () async {
                       CollectionReference deals =
                           FirebaseFirestore.instance.collection("deals");
